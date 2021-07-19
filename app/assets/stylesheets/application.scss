@@ -13,8 +13,8 @@
  *= require_tree .
  *= require_self
  */
- 
- 
+
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -22,7 +22,7 @@
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;;
+  box-sizing: border-box;
  }
 clearfix::after {
   content: "";
@@ -52,3 +52,4 @@ clearfix::after {
 .actions {
   margin-top: 5px;
 }
+
