@@ -13,10 +13,10 @@
 ActiveRecord::Schema.define(version: 2021_07_18_101349) do
 
   create_table "books", force: :cascade do |t|
-    t.text "title"
-    t.string "image_id"
+    t.string "title"
     t.text "body"
     t.integer "user_id"
+    t.integer "profile_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
