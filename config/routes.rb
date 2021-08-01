@@ -20,5 +20,15 @@ Rails.application.routes.draw do
   
   resources :users
   resources :books
+  
+  
+  #フォロー/フォロワー機能追加部分
+  resources :users, only: [:index, :show, :edit, :update] do
+# ——————————————— ここから ———————————————
+  resource :relationships, only: [:create, :destroy]
+  get 'followings' => 'relationships#followings', as: 'followings'
+  get 'followers' => 'relationships#followers', as: 'followers'
+# ——————————— ここまでネストさせる ———————————
+end
 
 end
