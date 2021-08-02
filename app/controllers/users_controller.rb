@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :ensure_current_user, only: [:update]
+  before_action :set_user, only: %I[show edit update destroy followings followers]
   
   def show
     @user = User.find(params[:id])
@@ -32,6 +33,23 @@ class UsersController < ApplicationController
       render :edit
     end
   end
+  
+  def followings
+    @followings = @user.following_users
+  end
+
+  def followers
+    @followers = @user.follower_users
+  end
+
+  private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
+
+  
+  
 
   private
   def user_params
