@@ -5,23 +5,23 @@ Rails.application.routes.draw do
   }
 
   root "homes#top"
-  
+
   resources :books, only: [:new, :create, :index, :show, :destroy] do
-  
+
   resources :post_comments, only: [:create, :destroy]
-  
+
   resource :favorites, only: [:create, :destroy]
   end
-  
+
 
   get "/home/about" => "homes#about"
-  
-  
-  
+
+
+
   resources :users
   resources :books
-  
-  
+
+
   #フォロー/フォロワー機能追加部分
   resources :users, only: [:index, :show, :edit, :update] do
 # ——————————————— ここから ———————————————
@@ -31,5 +31,9 @@ Rails.application.routes.draw do
   get "relationships/followings"
 # ——————————— ここまでネストさせる ———————————
 end
+
+#検索機能のルーティング
+get 'search' => 'searches#search'
+
 
 end
