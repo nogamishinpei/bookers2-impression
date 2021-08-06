@@ -69,3 +69,7 @@ gem 'jquery-rails'
 
 #検索機能で使えるらしい
 gem 'ransack'
+
+#JavaScriptのjQyery(非同期通信)
+
+gem "jquery-rails"

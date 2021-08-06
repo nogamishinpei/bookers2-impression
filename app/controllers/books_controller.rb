@@ -1,6 +1,8 @@
 class BooksController < ApplicationController
 
 before_action :correct_user, only: [:edit]
+before_action :baria_user, only: [:edit, :update]
+
   def correct_user
     book = Book.find(params[:id])
     if current_user.id != book.user_id
@@ -65,6 +67,12 @@ before_action :correct_user, only: [:edit]
   private
     def book_params
       params.require(:book).permit(:title, :body)
+    end
+
+    def baria_user
+	unless Book.find(params[:id]).user.id.to_i == current_user.id
+		redirect_to books_path
+	end
     end
 
 end
