@@ -20,7 +20,8 @@ before_action :baria_user, only: [:edit, :update]
   def index
     @user = current_user
     @book = Book.new
-    @books = Book.all
+    @books = Book.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
+    #↑の@books=の記述はいいねの数を比較して多い順で表示している
   end
 
   def create
