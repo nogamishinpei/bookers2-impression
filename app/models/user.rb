@@ -23,6 +23,11 @@ class User < ApplicationRecord
   
   attachment :profile_image
   
+  #DM機能実装
+  has_many :user_rooms
+  has_many :chats
+  
+  
   #フォロー/フォロワー機能追加部分
   def follow(user_id)
     relationships.create(followed_id: user_id)
