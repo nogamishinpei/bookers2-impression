@@ -17,19 +17,21 @@
 
       <tr>
         <th>
-          <%= link_to 'aaa', user_followings_path(user.id) %>
-          Follows: <%= user.followings.count %>
+          <%= link_to 'フォロー', user_followings_path(user.id) %>
+          : <%= user.followings.count %>
         </th>
         </tr>
         <tr>
         <th>
-          <%= link_to 'aaa', user_followers_path(user.id) %>
-          Followers: <%= user.followers.count %>
-
+          <%= link_to 'フォロワー', user_followers_path(user.id) %>
+          : <%= user.followers.count %>
+          </th>
+          <th>
+            <% if current_user != @user %>
+              <%= link_to 'chatを始める', chat_path(@user.id)%>
+            <% end %>
           </th>
       </tr>
-
-
     <tr>
       <th colspan="2">
 

@@ -35,5 +35,7 @@ end
 #検索機能のルーティング
 get 'search' => 'searches#search'
 
-
+#DMのルーティング
+get 'chat/:id' => 'chats#show', as: 'chat'
+  resources :chats, only: [:create]
 end
