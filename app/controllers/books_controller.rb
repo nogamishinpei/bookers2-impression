@@ -3,6 +3,8 @@ class BooksController < ApplicationController
 before_action :correct_user, only: [:edit]
 before_action :baria_user, only: [:edit, :update]
 
+impressionist :actions=> [:show, :index]
+
   def correct_user
     book = Book.find(params[:id])
     if current_user.id != book.user_id
@@ -15,6 +17,7 @@ before_action :baria_user, only: [:edit, :update]
     @book = Book.find(params[:id])
     @user = User.find(@book.user_id)
     @post_comment = PostComment.new
+    impressionist(@book, nil)
   end
 
   def index
@@ -22,6 +25,7 @@ before_action :baria_user, only: [:edit, :update]
     @book = Book.new
     @books = Book.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
     #↑の@books=の記述はいいねの数を比較して多い順で表示している
+
   end
 
   def create

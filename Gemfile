@@ -75,4 +75,4 @@ gem 'ransack'
 gem "jquery-rails"
 
 #閲覧数表示機能gem
-gem 'impressionist'
+gem 'impressionist', '~>1.6.1'

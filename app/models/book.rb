@@ -1,5 +1,7 @@
 class Book < ApplicationRecord
-  
+
+  is_impressionable counter_cache: true
+
   belongs_to :user, optional: true
   attachment :profile_image
   has_many :post_comments, dependent: :destroy
@@ -12,12 +14,12 @@ class Book < ApplicationRecord
 
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200}
-  
-  
-  
+
+
+
   #検索機能実装部分
 def self.search(search, word)
-  
+
   if search == "forward_match"
     @book = Book.where("title LIKE?","#{word}%")
     elsif search == "backward_match"
@@ -29,10 +31,10 @@ def self.search(search, word)
         else
           @book = Book.all
         end
-        
-    
-  
 end
-
+#閲覧数カウント機能
+def change
+    add_column :books, :impressions_count, :integer, default: 0
+end
 
 end
