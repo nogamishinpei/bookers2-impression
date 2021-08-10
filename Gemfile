@@ -73,3 +73,6 @@ gem 'ransack'
 #JavaScriptのjQyery(非同期通信)
 
 gem "jquery-rails"
+
+#閲覧数表示機能gem
+gem 'impressionist'
